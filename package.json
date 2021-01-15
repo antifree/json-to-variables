@@ -1,0 +1,24 @@
+{
+  "name": "json-to-variables",
+  "version": "1.0.0",
+  "description": "Github action that reads json file and writes its content as env variables",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antifree/json-to-variables.git"
+  },
+  "keywords": [],
+  "author": "Anton Ivanenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antifree/json-to-variables/issues"
+  },
+  "homepage": "https://github.com/antifree/json-to-variables#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  }
+}

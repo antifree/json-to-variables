@@ -1,0 +1,14 @@
+name: 'JSON to variables'
+author: 'Anton Ivanenko'
+description: 'Github action that reads json file and writes its content as env variables'
+inputs:
+  filename: 
+    description: 'The json file.'
+    required: true
+  prefix:
+    description: 'The prefix for variables.'
+    required: false
+    default: 'json'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

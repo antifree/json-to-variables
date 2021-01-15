@@ -1,0 +1,18 @@
+name: Test 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: A job to test action
+    steps:
+    - uses: actions/checkout@v2
+    - name: JSON to variables
+      uses: antifree/json-to-variables@HEAD
+      with:
+        filename: 'test.json'
+        prefix: test
+    - name: Show output
+      run: echo "The time was ${{ env.test_value }}, ${{ env.test_array_0_ }}, ${{ env.test_obj_value1 }}"

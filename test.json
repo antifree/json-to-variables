@@ -1,0 +1,11 @@
+{
+    "value": "value",
+    "array": [
+        "value 0",
+        "value 1"
+    ],
+    "obj": {
+        "value1": "value1",
+        "value2": "value2"
+    }
+}
