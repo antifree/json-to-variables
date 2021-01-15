@@ -1,6 +1,6 @@
 name: 'JSON to variables'
 author: 'Anton Ivanenko'
-description: 'Github action that reads json file and writes its content as env variables'
+description: 'This action reads json file and writes its content as environment variables'
 inputs:
   filename: 
     description: 'The json file.'
