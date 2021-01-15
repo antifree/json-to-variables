@@ -1,6 +1,8 @@
 name: 'JSON to variables'
 author: 'Anton Ivanenko'
 description: 'This action reads json file and writes its content as environment variables'
+icon: 'box'
+color: 'purple'
 inputs:
   filename: 
     description: 'The json file.'
