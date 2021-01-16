@@ -7,27 +7,25 @@ try {
     const prefix = core.getInput('prefix') || 'json';
 
     const fullPath = path.resolve(fileName);
-    console.log(`Processing file: ${fullPath}`);
+    core.info(`Processing file: ${fullPath}`);
     
     const rawdata = fs.readFileSync(fullPath);
     const rootObj = JSON.parse(rawdata);
 
-    const provessVariable = (variable, name) => {
+    const processVariable = (variable, name) => {
 
         if (typeof variable === 'undefined' || variable === null) {
             return;
         }
 
-        if (Array.isArray(variable)) {
-            
+        if (Array.isArray(variable)) {      
             variable.forEach((value, index) => {
-                provessVariable(value, `${name}_${index}_`);
+                processVariable(value, `${name}_${index}`);
             });
-            
         }
         else if (typeof variable === 'object') {
             for(const field in variable) {
-                provessVariable(variable[field], `${name}_${field}`);
+                processVariable(variable[field], `${name}_${field}`);
             }
         }
         else {
@@ -36,9 +34,8 @@ try {
         }
     };
 
-    provessVariable(rootObj, prefix);
+    processVariable(rootObj, prefix);
     
-
 } catch (error) {
     core.setFailed(error.message);
 }

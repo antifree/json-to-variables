@@ -1,9 +1,10 @@
 {
   "name": "json-to-variables",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This action reads json file and writes its content as environment variables",
   "main": "index.js",
   "scripts": {
+    "build": "ncc build index.js --license licenses.txt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

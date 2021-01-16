@@ -15,4 +15,4 @@ jobs:
         filename: 'test.json'
         prefix: test
     - name: Show output
-      run: echo "The time was ${{ env.test_value }}, ${{ env.test_array_0_ }}, ${{ env.test_obj_value1 }}"
+      run: echo "The time was ${{ env.test_value }}, ${{ env.test_array_0_value }}, ${{ env.test_obj_value1 }}"
