@@ -4,8 +4,7 @@ const core = require('@actions/core');
 
 try {
     const fileName = core.getInput('filename', { required: true });
-    const prefix = core.getInput('prefix') || 'json';
-
+    const prefix = core.getInput('prefix') || '';
     const fullPath = path.resolve(fileName);
     core.info(`Processing file: ${fullPath}`);
     
@@ -24,17 +23,22 @@ try {
             });
         }
         else if (typeof variable === 'object') {
-            for(const field in variable) {
-                processVariable(variable[field], `${name}_${field}`);
+            for(const key in variable) {
+                if(rootObj.hasOwnProperty(key)){
+                    processVariable(variable[key], `key`);
+                }
+                else {
+                    processVariable(variable[key], `${name}_${key}`);
+                }
             }
         }
         else {
-            core.info(`SET ENV '${name}' = ${variable}`);
+            core.info(`SET ENV '${prefix}${name}' = ${variable}`);
             core.exportVariable(name, variable.toString());
         }
     };
 
-    processVariable(rootObj, prefix);
+    processVariable(rootObj);
     
 } catch (error) {
     core.setFailed(error.message);
