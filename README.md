@@ -33,7 +33,7 @@ The prefix. Default value `json`.
 ### YML example 
 ```yml
 - name: JSON to variables
-  uses: mncorreia/json-to-variables-fork@v1.0.1
+  uses: antifree/json-to-variables@v1.0.1
   with:
     filename: 'test.json'
     prefix: ''

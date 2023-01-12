@@ -1,5 +1,5 @@
-name: 'JSON to variables - without prefix'
-author: 'Matheus Correia'
+name: 'JSON to variables'
+author: 'Anton Ivanenko'
 description: 'This action reads json file and writes its content as environment variables'
 branding:
   icon: 'box'
