@@ -1,55 +1,7 @@
-module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 718:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const fs = __nccwpck_require__(747);
-const path = __nccwpck_require__(622);
-const core = __nccwpck_require__(979);
-
-try {
-    const fileName = core.getInput('filename', { required: true });
-    const prefix = core.getInput('prefix') || 'json';
-
-    const fullPath = path.resolve(fileName);
-    core.info(`Processing file: ${fullPath}`);
-    
-    const rawdata = fs.readFileSync(fullPath);
-    const rootObj = JSON.parse(rawdata);
-
-    const processVariable = (variable, name) => {
-
-        if (typeof variable === 'undefined' || variable === null) {
-            return;
-        }
-
-        if (Array.isArray(variable)) {      
-            variable.forEach((value, index) => {
-                processVariable(value, `${name}_${index}`);
-            });
-        }
-        else if (typeof variable === 'object') {
-            for(const field in variable) {
-                processVariable(variable[field], `${name}_${field}`);
-            }
-        }
-        else {
-            core.info(`SET ENV '${name}' = ${variable}`);
-            core.exportVariable(name, variable.toString());
-        }
-    };
-
-    processVariable(rootObj, prefix);
-    
-} catch (error) {
-    core.setFailed(error.message);
-}
-
-/***/ }),
-
-/***/ 301:
+/***/ 207:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -62,8 +14,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const os = __importStar(__nccwpck_require__(87));
-const utils_1 = __nccwpck_require__(721);
+const os = __importStar(__nccwpck_require__(37));
+const utils_1 = __nccwpck_require__(645);
 /**
  * Commands
  *
@@ -135,7 +87,7 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 979:
+/***/ 695:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -157,11 +109,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const command_1 = __nccwpck_require__(301);
-const file_command_1 = __nccwpck_require__(689);
-const utils_1 = __nccwpck_require__(721);
-const os = __importStar(__nccwpck_require__(87));
-const path = __importStar(__nccwpck_require__(622));
+const command_1 = __nccwpck_require__(207);
+const file_command_1 = __nccwpck_require__(271);
+const utils_1 = __nccwpck_require__(645);
+const os = __importStar(__nccwpck_require__(37));
+const path = __importStar(__nccwpck_require__(17));
 /**
  * The code to exit an action
  */
@@ -380,7 +332,7 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 689:
+/***/ 271:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -396,9 +348,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fs = __importStar(__nccwpck_require__(747));
-const os = __importStar(__nccwpck_require__(87));
-const utils_1 = __nccwpck_require__(721);
+const fs = __importStar(__nccwpck_require__(147));
+const os = __importStar(__nccwpck_require__(37));
+const utils_1 = __nccwpck_require__(645);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -416,7 +368,7 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 721:
+/***/ 645:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -442,27 +394,27 @@ exports.toCommandValue = toCommandValue;
 
 /***/ }),
 
-/***/ 747:
+/***/ 147:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("fs");;
+module.exports = require("fs");
 
 /***/ }),
 
-/***/ 87:
+/***/ 37:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("os");;
+module.exports = require("os");
 
 /***/ }),
 
-/***/ 622:
+/***/ 17:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("path");;
+module.exports = require("path");
 
 /***/ })
 
@@ -474,8 +426,9 @@ module.exports = require("path");;
 /******/ 	// The require function
 /******/ 	function __nccwpck_require__(moduleId) {
 /******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -500,10 +453,59 @@ module.exports = require("path");;
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
-/******/ 	__nccwpck_require__.ab = __dirname + "/";/************************************************************************/
-/******/ 	// module exports must be returned from runtime so entry inlining is disabled
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	return __nccwpck_require__(718);
+/******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+const fs = __nccwpck_require__(147);
+const path = __nccwpck_require__(17);
+const core = __nccwpck_require__(695);
+
+try {
+    const fileName = core.getInput('filename', { required: true });
+    const prefix = core.getInput('prefix') || '';
+    const fullPath = path.resolve(fileName);
+    core.info(`Processing file: ${fullPath}`);
+    
+    const rawdata = fs.readFileSync(fullPath);
+    const rootObj = JSON.parse(rawdata);
+
+    const processVariable = (variable, name) => {
+
+        if (typeof variable === 'undefined' || variable === null) {
+            return;
+        }
+
+        if (Array.isArray(variable)) {      
+            variable.forEach((value, index) => {
+                processVariable(value, `${name}_${index}`);
+            });
+        }
+        else if (typeof variable === 'object') {
+            for(const key in variable) {
+                if(rootObj.hasOwnProperty(key)){
+                    processVariable(variable[key], `key`);
+                }
+                else {
+                    processVariable(variable[key], `${name}_${key}`);
+                }
+            }
+        }
+        else {
+            core.info(`SET ENV '${prefix}${name}' = ${variable}`);
+            core.exportVariable(name, variable.toString());
+        }
+    };
+
+    processVariable(rootObj);
+    
+} catch (error) {
+    core.setFailed(error.message);
+}
+})();
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;

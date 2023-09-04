@@ -11,7 +11,7 @@ inputs:
   prefix:
     description: 'The prefix for variables.'
     required: false
-    default: 'json'
+    default: ''
 runs:
   using: 'node16'
   main: 'dist/index.js'
