@@ -9,7 +9,7 @@ This action reads json file and writes its content as environment variables.
 
 ### `prefix`
 
-The prefix. Default value `json`.
+The prefix (optional). Default value is empty string.
 
 ## Usage
 
@@ -36,7 +36,7 @@ The prefix. Default value `json`.
   uses: antifree/json-to-variables@v1.0.1
   with:
     filename: 'test.json'
-    prefix: ''
+    prefix: 'test'
 - name: Show output
   run: echo "The time was ${{ env.test_value }}, ${{ env.test_array_0_value }}, ${{ env.test_obj_value1 }}"
 ```
