@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 207:
+/***/ 777:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -15,7 +15,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const os = __importStar(__nccwpck_require__(37));
-const utils_1 = __nccwpck_require__(645);
+const utils_1 = __nccwpck_require__(855);
 /**
  * Commands
  *
@@ -87,7 +87,7 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 695:
+/***/ 181:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -109,9 +109,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const command_1 = __nccwpck_require__(207);
-const file_command_1 = __nccwpck_require__(271);
-const utils_1 = __nccwpck_require__(645);
+const command_1 = __nccwpck_require__(777);
+const file_command_1 = __nccwpck_require__(679);
+const utils_1 = __nccwpck_require__(855);
 const os = __importStar(__nccwpck_require__(37));
 const path = __importStar(__nccwpck_require__(17));
 /**
@@ -332,7 +332,7 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 271:
+/***/ 679:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -350,7 +350,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const fs = __importStar(__nccwpck_require__(147));
 const os = __importStar(__nccwpck_require__(37));
-const utils_1 = __nccwpck_require__(645);
+const utils_1 = __nccwpck_require__(855);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -368,7 +368,7 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 645:
+/***/ 855:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -461,7 +461,7 @@ var __webpack_exports__ = {};
 (() => {
 const fs = __nccwpck_require__(147);
 const path = __nccwpck_require__(17);
-const core = __nccwpck_require__(695);
+const core = __nccwpck_require__(181);
 
 try {
     const fileName = core.getInput('filename', { required: true });
@@ -486,7 +486,7 @@ try {
         else if (typeof variable === 'object') {
             for(const key in variable) {
                 if(rootObj.hasOwnProperty(key)){
-                    processVariable(variable[key], `key`);
+                    processVariable(variable[key], key);
                 }
                 else {
                     processVariable(variable[key], `${name}_${key}`);
