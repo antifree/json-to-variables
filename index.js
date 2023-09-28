@@ -34,7 +34,7 @@ try {
         }
         else {
             core.info(`SET ENV '${prefix}${name}' = ${variable}`);
-            core.exportVariable(name, variable.toString());
+            core.exportVariable(`${prefix}${name}`, variable.toString());
         }
     };
 
