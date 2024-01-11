@@ -26612,7 +26612,7 @@ try {
         }
         else if (typeof variable === 'object') {
             for(const key in variable) {
-                const variableName = (rootObj.hasOwnProperty(key) || name.length === 0) 
+                const variableName = name.length === 0
                     ? key
                     : `${name}_${key}`;
 
