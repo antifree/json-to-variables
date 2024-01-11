@@ -24,21 +24,20 @@ try {
         }
         else if (typeof variable === 'object') {
             for(const key in variable) {
-                if(rootObj.hasOwnProperty(key)){
-                    processVariable(variable[key], key);
-                }
-                else {
-                    processVariable(variable[key], `${name}_${key}`);
-                }
+                const variableName = (rootObj.hasOwnProperty(key) || name.length > 0)
+                    key
+                    : `${name}_${key}`
+
+                processVariable(variable[key], variableName);
             }
         }
         else {
-            core.info(`SET ENV '${prefix}${name}' = ${variable}`);
+            core.info(`SET ENV '${name}' = ${variable}`);
             core.exportVariable(name, variable.toString());
         }
     };
 
-    processVariable(rootObj);
+    processVariable(rootObj, prefix);
     
 } catch (error) {
     core.setFailed(error.message);

@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  test_job:
+  test_with_prefix_job:
     runs-on: ubuntu-latest
-    name: A job to test action
+    name: A job to test action with prefix
     steps:
     - uses: actions/checkout@v2
     - name: JSON to variables
@@ -16,3 +16,16 @@ jobs:
         prefix: test
     - name: Show output
       run: echo "The time was ${{ env.test_value }}, ${{ env.test_array_0_value }}, ${{ env.test_obj_value1 }}"
+
+  test_without_prefix_job:
+    runs-on: ubuntu-latest
+    name: A job to test action without prefix
+    steps:
+    - uses: actions/checkout@v2
+    - name: JSON to variables
+      uses: antifree/json-to-variables@HEAD
+      with:
+        filename: 'test.json'
+    - name: Show output
+      run: echo "The time was ${{ env.value }}, ${{ env.array_0_value }}, ${{ env.obj_value1 }}"
+
