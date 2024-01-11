@@ -24,9 +24,9 @@ try {
         }
         else if (typeof variable === 'object') {
             for(const key in variable) {
-                const variableName = (rootObj.hasOwnProperty(key) || name.length > 0)
-                    key
-                    : `${name}_${key}`
+                const variableName = name.length === 0
+                    ? key
+                    : `${name}_${key}`;
 
                 processVariable(variable[key], variableName);
             }
