@@ -26584,6 +26584,8 @@ try {
     const fileName = core.getInput('filename', { required: true });
     const prefix = core.getInput('prefix') || '';
     const fullPath = path.resolve(fileName);
+    const sensitiveKeys = core.getInput('sensitiveKeys').split(/[\r\n]/).map(input => input.trim()).filter(input => input !== '') || '';
+
     core.info(`Processing file: ${fullPath}`);
     
     const rawdata = fs.readFileSync(fullPath);
@@ -26611,6 +26613,10 @@ try {
             }
         }
         else {
+            // Check if the key contains any sensitive key(s) and mask the value if it does
+            if (sensitiveKeys.some(sensitiveKey => name.includes(sensitiveKey))) {
+                core.setSecret(variable.toString());
+            }
             core.info(`SET ENV '${prefix}${name}' = ${variable}`);
             core.exportVariable(`${prefix}${name}`, variable.toString());
         }
