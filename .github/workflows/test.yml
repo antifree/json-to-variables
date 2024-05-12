@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to test action with prefix
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: JSON to variables
       uses: antifree/json-to-variables@HEAD
       with:
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to test action without prefix
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: JSON to variables
       uses: antifree/json-to-variables@HEAD
       with:
