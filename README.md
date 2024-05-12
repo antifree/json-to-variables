@@ -33,7 +33,7 @@ The prefix (optional). Default value is empty string.
 ### YML example 
 ```yml
 - name: JSON to variables
-  uses: antifree/json-to-variables@v1.0.1 # x-release-please-version
+  uses: antifree/json-to-variables@v1.2.0 # x-release-please-version
   with:
     filename: 'test.json'
     prefix: 'test'
