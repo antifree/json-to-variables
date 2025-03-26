@@ -9,7 +9,11 @@ This action reads json file and writes its content as environment variables.
 
 ### `prefix`
 
-The prefix (optional). Default value is empty string.
+(Optional) the prefix for all variables. Default value is empty string.
+
+### `has_secrets`
+
+(Optional) Identifies whether file has variables considered as secrets. If `true` - adds all variables to github secrets to be masked in logs. Default value `false`
 
 ## Usage
 
@@ -33,10 +37,11 @@ The prefix (optional). Default value is empty string.
 ### YML example 
 ```yml
 - name: JSON to variables
-  uses: antifree/json-to-variables@v1.2.0 # x-release-please-version
+  uses: antifree/json-to-variables@v1.3.0 # x-release-please-version
   with:
     filename: 'test.json'
     prefix: 'test'
+    has_secrets: true
 - name: Show output
   run: echo "The time was ${{ env.test_value }}, ${{ env.test_array_0_value }}, ${{ env.test_obj_value1 }}"
 ```

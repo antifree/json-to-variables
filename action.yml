@@ -12,6 +12,10 @@ inputs:
     description: 'The prefix for variables.'
     required: false
     default: ''
+  has_secrets:
+    description: 'Identifies whether file has variables considered as secrets. If `true` - adds all variables to github secrets to be masked in logs'
+    required: false
+    default: false
 runs:
   using: 'node20'
   main: 'dist/index.js'
