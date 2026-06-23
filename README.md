@@ -37,7 +37,7 @@ This action reads json file and writes its content as environment variables.
 ### YML example 
 ```yml
 - name: JSON to variables
-  uses: antifree/json-to-variables@v1.3.0 # x-release-please-version
+  uses: antifree/json-to-variables@v1.4.0 # x-release-please-version
   with:
     filename: 'test.json'
     prefix: 'test'

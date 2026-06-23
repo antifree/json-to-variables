@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/antifree/json-to-variables/compare/v1.3.0...v1.4.0) (2026-06-23)
+
+
+### Features
+
+* support node24 ([76e058a](https://github.com/antifree/json-to-variables/commit/76e058a762c695e38ac6483b6beeb69381d0e285))
+
 ## [1.3.0](https://github.com/antifree/json-to-variables/compare/v1.2.0...v1.3.0) (2025-03-26)
 
 
